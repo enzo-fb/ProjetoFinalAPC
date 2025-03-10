@@ -2,7 +2,7 @@
 #include "tipos.h"
 void menuPrincipal(){
     printf("\n===========================================================\n");
-    printf("       Sistema Eletr?nico de Gest?o de Alunos - SEGA\n");
+    printf("       Sistema Eletrônico de Gestão de Alunos - SEGA\n");
     printf("===========================================================\n\n");
     printf("                    - Menu Principal -\n\n\n");
     printf("    1. Alunos (graduando)\n");
@@ -18,8 +18,9 @@ void menuCaso1(){
     printf("    2. Adicionar aluno;\n");
     printf("    3. Remover aluno;\n");
     printf("    4. Quantidade de alunos graduando\n");
-    printf("    5. Voltar ao menu principal;\n");
-    printf("    6. Sair\n");
+    printf("    5. Listar alunos\n");
+    printf("    6. Voltar ao menu principal;\n");
+    printf("    7. Sair\n");
     printf("===========================================================\n");
 }
 
@@ -30,8 +31,9 @@ void menuCaso2(){
     printf("    2. Adicionar aluno;\n");
     printf("    3. Remover aluno;\n");
     printf("    4. Quantidade de alunos formados;\n");
-    printf("    5. Voltar ao menu principal;\n");
-    printf("    6. Sair\n");
+    printf("    5. Listar alunos\n");
+    printf("    6. Voltar ao menu principal;\n");
+    printf("    7. Sair\n");
     printf("===========================================================\n");
 }
 
@@ -40,8 +42,19 @@ void desejaVoltarAoMenu(){
 }
 
 void printAluno(Aluno aluno){
-    printf("-- Registro do aluno --\n");
+    printf("-- Registro do Aluno --\n");
     printf("Nome: %s\n", aluno.nome);
     printf("Idade: %d\n", aluno.idade);
     printf("Matrícula: 00%d\n", aluno.matricula);
+    printf("n");
+}
+
+void listaAlunos(){
+    system("clear");
+    printf("          -- Banco de alunos --\n\n");
+    printf("    NOME                    MATRÍCULA \n\n");
+}
+
+void desejaVoltarAoMenu2(){
+    printf("\nDigita 1 para voltar ao menu anterior ou 2 para sair: \n");
 }
