@@ -40,8 +40,14 @@ void desejaVoltarAoMenu(){
 }
 
 void printAluno(Aluno aluno){
-    printf("-- Registro do aluno --\n");
+    printf("-- Registro do Aluno --\n");
     printf("Nome: %s\n", aluno.nome);
     printf("Idade: %d\n", aluno.idade);
     printf("Matrícula: 00%d\n", aluno.matricula);
+}
+
+void listaAlunos(){
+    system("clear");
+    printf("          -- Banco de alunos --\n\n");
+    printf("    NOME                    MATRÍCULA \n\n");
 }

@@ -5,6 +5,8 @@
 #include "menus.c"
 #include "tipos.h"
 
+void consultar_aluno(Lista *lista);
+
 int main()
 {
     setlocale(LC_ALL, "");
@@ -12,7 +14,8 @@ int main()
     int opcao;
     // essas variáveis, com exceção de "opcao", serão utilizadas como parâmetros nas funções.
     // a struct "aluno" inicializada, é através dela que os dados serão registrados.
-    Lista *lista = NULL; // inicializa a lista como nula
+    Lista *lista_formados = NULL;   // inicializa a lista como nula
+    Lista *lista_graduandos = NULL; // inicializa a lista como nula
     // Aluno alunos[TOTAL];
 
     int totalGraduando = 0, totalFormado = 0; // variáveis inicializadas;
@@ -39,20 +42,20 @@ int main()
                 {
                 case 1:
                     lista_alunos(alunos, totalGraduando);
-                    consultar_aluno(alunos, totalGraduando);
+                    consultar_aluno(lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 2:
-                    adicionar_aluno(alunos, &totalGraduando);
+                    adicionar_aluno(&lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalGraduando);
-                    remover_aluno(alunos, &totalGraduando);
+                    remover_aluno(&lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
@@ -91,20 +94,20 @@ int main()
                 {
                 case 1:
                     lista_alunos(alunos, totalFormado);
-                    consultar_aluno(alunos, totalFormado); // chama a função para consultar
+                    consultar_aluno(lista_formados);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 2:
-                    adicionar_aluno(alunos, &totalFormado); // o símbolo '&' está sendo usado como endereço do ponteiro(*total), que está contido na função depois do "main".
+                    adicionar_aluno(&lista_formados); // o símbolo '&' está sendo usado como endereço do ponteiro(*total), que está contido na função depois do "main".
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalFormado);
-                    remover_aluno(alunos, &totalFormado); // chama a função para remover
+                    remover_aluno(&lista_formados); // chama a função para remover
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
@@ -143,13 +146,17 @@ int main()
     return 0;
 }
 
-void consultar_aluno(Lista *lista, int matricula)
+void consultar_aluno(Lista *lista)
 {
     if (lista == NULL)
     {
         printf("Lista vazia\n");
         return;
     }
+    int matricula;
+    printf("Digite a matrícula do aluno: ");
+    scanf("%d", &matricula);
+    getchar();
     if (lista->inicio->aluno.matricula == matricula)
     {
         printAluno(lista->inicio->aluno);
@@ -171,78 +178,114 @@ void consultar_aluno(Lista *lista, int matricula)
         aux = aux->prox;
     }
     printf("Aluno não encontrado\n");
-
 }
 
-void adicionar_aluno(Aluno alunos[TOTAL], int *total) // a variável *total(ponteiro) é a que está contabilizando os alunos, "TOTAL" é o define usado no começo do código.
-// o ponteiro "total" vai alterar as variáveis dentro da função main.
-{
-    if (*total >= TOTAL) // este "if" vai garantir que não ultrapasse o total estipulado no início do código.
+Lista *adicionar_aluno(Lista **lista)
+{ // a variável *total(ponteiro) é a que está contabilizando os alunos, "TOTAL" é o define usado no começo do código.
+  // o ponteiro "total" vai alterar as variáveis dentro da função main.
+    if (*lista == NULL)
     {
-        system("clear");
-        printf("Limite de alunos atingido.\n");
-        return;
+        *lista = (Lista *)malloc(sizeof(Lista));
+        (*lista)->inicio = NULL;
+        (*lista)->fim = NULL;
+        (*lista)->total = 0;
     }
-
-    alunos[*total].matricula = *total + 1;
+    Aluno aluno;
     printf("Digite o nome do aluno: ");
-    fgets(alunos[*total].nome, TOTAL, stdin);                       // funciona melhor para leitura de palavras, lendo também os espaços.
-    alunos[*total].nome[strcspn(alunos[*total].nome, "\n")] = '\0'; // Remove a nova linha
+    fgets(aluno.nome, TOTAL, stdin);              // funciona melhor para leitura de palavras, lendo também os espaços.
+    aluno.nome[strcspn(aluno.nome, "\n")] = '\0'; // Remove a nova linha
     printf("Digite a idade do aluno: ");
-    scanf("%d", &alunos[*total].idade);
+    scanf("%d", &aluno.idade);
+    printf("Digite a matrícula do aluno: ");
+    scanf("%d", &aluno.matricula);
     getchar();
-
-    (*total)++;      // adiciona mais um "aluno" na contagem total.
-    system("clear"); // diminui a poluição visual.
+    Raiz *novo = (struct Raiz *)malloc(sizeof(Raiz));
+    novo->aluno = aluno;
+    novo->prox = NULL;
+    if ((*lista)->inicio == NULL)
+    {
+        (*lista)->inicio = novo;
+        (*lista)->fim = novo;
+    }
+    else
+    {
+        (*lista)->fim->prox = novo;
+        (*lista)->fim = novo;
+    }
+    system("clear");
+    (*lista)->total++;
     printf("Aluno adicionado com sucesso.\n");
+    return lista;
 }
 
-void remover_aluno(Aluno alunos[TOTAL], int *total)
+Lista *remover_aluno(Lista **lista)
 {
-    int matricula, encontrado = 0;
-
-    printf("Digite a matrícula do aluno a ser removido: ");
+    if (lista == NULL)
+    {
+        printf("Lista vazia\n");
+        return NULL;
+    }
+    int matricula = 0;
+    printf("Digite a matrícula do aluno: ");
     scanf("%d", &matricula);
-    fflush(stdin);
-
-    for (int i = 0; i < *total; i++)
+    getchar();
+    if ((*lista)->inicio->aluno.matricula == matricula)
     {
-        if (alunos[i].matricula == matricula) // vai fazer uma busca no banco de dados para encontrar a matrícula digitada anteriormente
+        Raiz *aux = (*lista)->inicio;
+        (*lista)->inicio = (*lista)->inicio->prox;
+        free(aux);
+        printf("Aluno removido com sucesso\n");
+        return *lista;
+    }
+    else if ((*lista)->fim->aluno.matricula == matricula)
+    {
+        Raiz *aux = (*lista)->inicio;
+        while (aux->prox != (*lista)->fim)
         {
-            for (int j = i; j < *total - 1; j++) // encontrando o aluno no "if", o "for" será executado;
-            {
-                alunos[j] = alunos[j + 1];
-            }
-            (*total)--; // retira esse aluno do total contabilizado até o momento.
-            encontrado = 1;
-            system("clear");
-            printf("Aluno removido com sucesso.\n");
-            break;
+            aux = aux->prox;
         }
+        free((*lista)->fim);
+        (*lista)->fim = aux;
+        (*lista)->fim->prox = NULL;
+        printf("Aluno removido com sucesso\n");
+        return *lista;
     }
-
-    if (encontrado == 0)
+    Raiz *aux = (*lista)->inicio;
+    while (aux->prox != NULL)
     {
-        system("clear");
-        printf("Aluno não encontrado.\n");
+        if (aux->aluno.matricula == matricula)
+        {
+            Raiz *aux2 = aux->prox;
+            aux->prox = aux->prox->prox;
+            free(aux2);
+            printf("Aluno removido com sucesso\n");
+            return *lista;
+        }
+        aux = aux->prox;
     }
+    printf("Aluno não encontrado\n");
+    return *lista;
 }
 
-void qntd_alunos(int total)
+void qntd_alunos(Lista *lista)
 {
-
     system("clear");
-    printf("Quantidade de alunos cadastrados: %d\n", total);
+    printf("Quantidade de alunos cadastrados: %d\n", lista->total);
 }
 
-void lista_alunos(Aluno alunos[TOTAL], int total)
+
+void lista_alunos(Lista *lista)
 {
-    system("clear");
-    printf("          -- Banco de alunos --\n\n");
-    printf("    NOME                    MATRÍCULA \n\n");
-    for (int i = 0; i < total; i++)
+   if (lista == NULL)
+   {
+       printf("Lista vazia\n");
+       return;
+   }
+    Raiz *aux = lista->inicio;
+    while (aux->prox != NULL)
     {
-        printf("  %-20s  --     %03d\n", alunos[i].nome, alunos[i].matricula);
+        printAluno(aux->aluno);
+        aux = aux->prox;
     }
     printf("\n");
 }
