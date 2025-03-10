@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include "menus.c"
+
 #define TOTAL 100
 
 typedef struct // a estrutura mais importante do c?digo!
@@ -33,14 +35,7 @@ int main()
     int escolha;
     do
     {
-        printf("\n===========================================================\n");
-        printf("       Sistema Eletr?nico de Gest?o de Alunos - SEGA\n");
-        printf("===========================================================\n\n");
-        printf("                    - Menu Principal -\n\n\n");
-        printf("    1. Alunos (graduando)\n");
-        printf("    2. Alunos (formado)\n");
-        printf("    3. Sair\n");
-        printf("===========================================================\n");
+        menupricnipal();
 
         scanf("%d", &opcao);
         getchar(); // evita aparecer erros e garante a leitura correta das variaveis, funciona como fflush, para limpar o buffer.
@@ -52,15 +47,7 @@ int main()
             do
             {
 
-                printf("\n===========================================================\n\n");
-                printf("            MENU DE GERENCIAMENTO DE DISCENTES \n\n\n");
-                printf("    1. Consultar aluno;\n");
-                printf("    2. Adicionar aluno;\n");
-                printf("    3. Remover aluno;\n");
-                printf("    4. Quantidade de alunos graduando\n");
-                printf("    5. Sair;\n");
-                printf("    6. Voltar ao menu principal.\n");
-                printf("===========================================================\n");
+                menuCaso1();
 
                 scanf("%d", &opcao);
                 getchar();
@@ -112,16 +99,7 @@ int main()
             do
             {
 
-                printf("\n===========================================================\n\n");
-                printf("           MENU DE GERENCIAMENTO DE ALUNOS FORMADOS\n\n\n");
-                printf("    1. Consultar aluno;\n");
-                printf("    2. Adicionar aluno;\n");
-                printf("    3. Remover aluno;\n");
-                printf("    4. Quantidade de alunos formados;\n");
-                printf("    5. Sair;\n");
-                printf("    6. Voltar ao menu principal.\n");
-                printf("\n===========================================================\n");
-
+                menuCaso2();
                 scanf("%d", &opcao);
                 fflush(stdin);
 
