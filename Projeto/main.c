@@ -12,7 +12,9 @@ int main()
     int opcao;
     // essas variáveis, com exceção de "opcao", serão utilizadas como parâmetros nas funções.
     // a struct "aluno" inicializada, é através dela que os dados serão registrados.
-    Aluno alunos[TOTAL];
+    Lista *lista = NULL; // inicializa a lista como nula
+    // Aluno alunos[TOTAL];
+
     int totalGraduando = 0, totalFormado = 0; // variáveis inicializadas;
     int escolha;
     do
@@ -141,32 +143,35 @@ int main()
     return 0;
 }
 
-void consultar_aluno(Aluno alunos[TOTAL], int total)
+void consultar_aluno(Lista *lista, int matricula)
 {
-    char nome_aluno[TOTAL];
-    int encontrado = 0; // Variável para ser usada como referência, se permanecer em 0, vai constar como "não encontrado".
-
-    printf("Digite o nome do aluno:\n");
-    fgets(nome_aluno, TOTAL, stdin);
-    nome_aluno[strcspn(nome_aluno, "\n")] = '\0'; // strcspn vai ler a posição que encontra o \n e vai substituí-lo por nulo;
-    // isso evita de ficar registrado caracteres indesejados na string.
-
-    for (int i = 0; i < total; i++)
+    if (lista == NULL)
     {
-        if (strcmp(alunos[i].nome, nome_aluno) == 0) // estrutura básica de comparação de strings
+        printf("Lista vazia\n");
+        return;
+    }
+    if (lista->inicio->aluno.matricula == matricula)
+    {
+        printAluno(lista->inicio->aluno);
+        return;
+    }
+    else if (lista->fim->aluno.matricula == matricula)
+    {
+        printAluno(lista->fim->aluno);
+        return;
+    }
+    Raiz *aux = lista->inicio;
+    while (aux->prox != NULL)
+    {
+        if (aux->aluno.matricula == matricula)
         {
-            system("clear");
-            printAluno(alunos[i]); // chama a função para imprimir os dados do aluno
-            encontrado = 1;
-            break;
+            printAluno(aux->aluno);
+            return;
         }
+        aux = aux->prox;
     }
+    printf("Aluno não encontrado\n");
 
-    if (encontrado == 0)
-    {
-        system("clear");
-        printf("Aluno não encontrado.\n");
-    }
 }
 
 void adicionar_aluno(Aluno alunos[TOTAL], int *total) // a variável *total(ponteiro) é a que está contabilizando os alunos, "TOTAL" é o define usado no começo do código.
