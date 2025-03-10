@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <stdlib.h>
 #include "menus.c"
 
 #define TOTAL 100
@@ -35,7 +36,7 @@ int main()
     int escolha;
     do
     {
-        menupricnipal();
+        menuPrincipal();
 
         scanf("%d", &opcao);
         getchar(); // evita aparecer erros e garante a leitura correta das variáveis, funciona como fflush, para limpar o buffer.
@@ -80,10 +81,11 @@ int main()
                     system("clear");
                     break;
                 case 5:
-                    printf("Saindo...\n");
+                    system("clear");
                     break;
                 case 6:
-                    system("clear");
+
+                    printf("Saindo...\n");
                     break;
                 default:
                     system("clear");
@@ -131,11 +133,12 @@ int main()
                     system("clear");
                     break;
                 case 5:
-                    printf("Saindo...\n");
-                    break;
-                case 6:
                     system("clear");
                     break;
+                case 6:
+                    printf("Saindo...\n");
+                    break;
+
                 default:
                     system("clear");
                     printf("Opção inválida!\n");
