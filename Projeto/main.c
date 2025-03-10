@@ -43,7 +43,7 @@ int main()
         switch (opcao)
         {
         case 1:
-            system("cls");
+            system("clear");
             do
             {
 
@@ -59,35 +59,35 @@ int main()
                     consultar_aluno(alunos, totalGraduando);
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 2:
                     adicionar_aluno(alunos, &totalGraduando);
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalGraduando);
                     remover_aluno(alunos, &totalGraduando);
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 4:
                     qntd_alunos(totalGraduando);
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 5:
                     printf("Saindo...\n");
                     break;
                 case 6:
-                    system("cls");
+                    system("clear");
                     break;
                 default:
-                    system("cls");
+                    system("clear");
                     printf("            Op??o inv?lida!\n");
 
                     break;
@@ -95,7 +95,7 @@ int main()
             } while (escolha != 2 && opcao != 5 && opcao != 6);
             break;
         case 2:
-            system("cls");
+            system("clear");
             do
             {
 
@@ -110,35 +110,35 @@ int main()
                     consultar_aluno(alunos, totalFormado); // chama a fun??o para consultar
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 2:
                     adicionar_aluno(alunos, &totalFormado); // o simbolo '&' est? sendo usado como endere?o do ponteiro(*total), que est? contido na fun??o depois do "main".
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalFormado);
                     remover_aluno(alunos, &totalFormado); // chama a fun??o para remover
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 4:
                     qntd_alunos(totalFormado); // chama a fun??o para ver a quantidade de alunos
                     printf("\nDeseja voltar ao menu ?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
                     scanf("%d", &escolha);
-                    system("cls");
+                    system("clear");
                     break;
                 case 5:
                     printf("Saindo...\n");
                     break;
                 case 6:
-                    system("cls");
+                    system("clear");
                     break;
                 default:
-                    system("cls");
+                    system("clear");
                     printf("Op??o inv?lida!\n");
                     break;
                 }
@@ -172,7 +172,7 @@ void consultar_aluno(Aluno alunos[TOTAL], int total)
     {
         if (strcmp(alunos[i].nome, nome_aluno) == 0) // estrutura b?sica de compara??o de strings
         {
-            system("cls");
+            system("clear");
             printf("-- Registro do aluno --\n");
             printf("Nome: %s\n", alunos[i].nome);
             printf("Idade: %d\n", alunos[i].idade);
@@ -184,7 +184,7 @@ void consultar_aluno(Aluno alunos[TOTAL], int total)
 
     if (encontrado == 0)
     {
-        system("cls");
+        system("clear");
         printf("Aluno n?o encontrado.\n");
     }
 }
@@ -194,7 +194,7 @@ void adicionar_aluno(Aluno alunos[TOTAL], int *total) // a variavel *total(ponte
 {
     if (*total >= TOTAL) // este "if" vai garantir que n?o ultrapasse o total estipulado no inicio do codigo.
     {
-        system("cls");
+        system("clear");
         printf("Limite de alunos atingido.\n");
         return;
     }
@@ -208,7 +208,7 @@ void adicionar_aluno(Aluno alunos[TOTAL], int *total) // a variavel *total(ponte
     getchar();
 
     (*total)++;    // adiciona mais um "aluno" na contagem total.
-    system("cls"); // diminui a polui??o visual.
+    system("clear"); // diminui a polui??o visual.
     printf("Aluno adicionado com sucesso.\n");
 }
 
@@ -230,7 +230,7 @@ void remover_aluno(Aluno alunos[TOTAL], int *total)
             }
             (*total)--; // retira esse aluno do total contabilizado at? o momento.
             encontrado = 1;
-            system("cls");
+            system("clear");
             printf("Aluno removido com sucesso.\n");
             break;
         }
@@ -238,7 +238,7 @@ void remover_aluno(Aluno alunos[TOTAL], int *total)
 
     if (encontrado == 0)
     {
-        system("cls");
+        system("clear");
         printf("Aluno n?o encontrado.\n");
     }
 }
@@ -246,13 +246,13 @@ void remover_aluno(Aluno alunos[TOTAL], int *total)
 void qntd_alunos(int total)
 {
 
-    system("cls");
+    system("clear");
     printf("Quantidade de alunos cadastrados: %d\n", total);
 }
 
 void lista_alunos(Aluno alunos[TOTAL], int total)
 {
-    system("cls");
+    system("clear");
     printf("          -- Banco de alunos --\n\n");
     printf("    NOME                    MATR?CULA \n\n");
     for (int i = 0; i < total; i++)
