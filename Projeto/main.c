@@ -9,7 +9,7 @@ void consultar_aluno(Lista *lista);
 
 int main()
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "portuguese");
 
     int opcao;
     // essas variáveis, com exceção de "opcao", serão utilizadas como parâmetros nas funções.
@@ -17,8 +17,6 @@ int main()
     Lista *lista_formados = NULL;   // inicializa a lista como nula
     Lista *lista_graduandos = NULL; // inicializa a lista como nula
     // Aluno alunos[TOTAL];
-
-    int totalGraduando = 0, totalFormado = 0; // variáveis inicializadas;
     int escolha;
     do
     {
