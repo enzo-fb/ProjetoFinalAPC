@@ -46,6 +46,7 @@ void printAluno(Aluno aluno){
     printf("Nome: %s\n", aluno.nome);
     printf("Idade: %d\n", aluno.idade);
     printf("Matrícula: 00%d\n", aluno.matricula);
+    printf("n");
 }
 
 void listaAlunos(){
