@@ -59,7 +59,7 @@ int main()
                     system("clear");
                     break;
                 case 4:
-                    qntd_alunos(totalGraduando);
+                    qntd_alunos(lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
@@ -70,6 +70,8 @@ int main()
                 case 6:
 
                     printf("Saindo...\n");
+                    liberarListas(&lista_formados);
+                    liberarListas(&lista_graduandos);
                     break;
                 default:
                     system("clear");
@@ -111,7 +113,7 @@ int main()
                     system("clear");
                     break;
                 case 4:
-                    qntd_alunos(totalFormado); // chama a função para ver a quantidade de alunos
+                    qntd_alunos(lista_formados); // chama a função para ver a quantidade de alunos
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
@@ -121,6 +123,8 @@ int main()
                     break;
                 case 6:
                     printf("Saindo...\n");
+                    liberarListas(&lista_formados);
+                    liberarListas(&lista_graduandos);
                     break;
 
                 default:
@@ -133,6 +137,8 @@ int main()
             break;
         case 3:
             printf("Saindo...\n");
+            liberarListas(&lista_formados);
+            liberarListas(&lista_graduandos);
             break;
         default:
             printf("            Opção inválida!\n");
@@ -213,7 +219,7 @@ Lista *adicionar_aluno(Lista **lista)
     system("clear");
     (*lista)->total++;
     printf("Aluno adicionado com sucesso.\n");
-    return lista;
+    return *lista;
 }
 
 Lista *remover_aluno(Lista **lista)
@@ -285,4 +291,21 @@ void lista_alunos(Lista *lista)
         aux = aux->prox;
     }
     printf("\n");
+}
+
+void liberarListas(Lista **lista)
+{
+    if (*lista == NULL)
+    {
+        return;
+    }
+    Raiz *aux = (*lista)->inicio;
+    while (aux != NULL)
+    {
+        Raiz *aux2 = aux->prox;
+        free(aux);
+        aux = aux2;
+    }
+    free(*lista);
+    *lista = NULL;
 }

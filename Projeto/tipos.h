@@ -8,11 +8,13 @@ typedef struct // a estrutura mais importante do código!
     int idade;
 } Aluno;
 
-typedef struct
+typedef struct Raiz Raiz;
+
+struct Raiz
 {
     Aluno aluno;
     Raiz *prox;
-} Raiz;
+};
 
 typedef struct
 {
@@ -24,7 +26,8 @@ typedef struct
 // Declare your types and function prototypes here
 void lista_alunos(Lista *lista);
 void consultar_aluno(Lista *lista);
-Lista * adicionar_aluno(Lista **lista);
-Lista* remover_aluno(Lista **lista);
+Lista*adicionar_aluno(Lista **lista);
+Lista*remover_aluno(Lista **lista);
 void qntd_alunos(Lista *lista);
+void liberarListas(Lista **lista);
 #endif // TIPOS_H

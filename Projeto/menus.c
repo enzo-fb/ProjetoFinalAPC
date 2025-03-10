@@ -2,7 +2,7 @@
 #include "tipos.h"
 void menuPrincipal(){
     printf("\n===========================================================\n");
-    printf("       Sistema Eletr?nico de Gest?o de Alunos - SEGA\n");
+    printf("       Sistema Eletrônico de Gestão de Alunos - SEGA\n");
     printf("===========================================================\n\n");
     printf("                    - Menu Principal -\n\n\n");
     printf("    1. Alunos (graduando)\n");
