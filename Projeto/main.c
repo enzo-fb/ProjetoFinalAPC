@@ -65,10 +65,17 @@ int main()
                     system("clear");
                     break;
                 case 5:
-                    lista_alunos(lista_graduandos);
-                    desejaVoltarAoMenu();
-                    scanf("%d", &escolha);
                     system("clear");
+                    lista_alunos(lista_graduandos);
+                    desejaVoltarAoMenu2();
+                    scanf("%d", &escolha);
+                    if (escolha == 2)
+                    {
+                        printf("Saindo...\n");
+                        liberarListas(&lista_formados);
+                        liberarListas(&lista_graduandos);
+                        exit(0);
+                    }
                     break;
                 case 6:
 
@@ -125,10 +132,18 @@ int main()
                     system("clear");
                     break;
                 case 5:
-                    lista_alunos(lista_formados);
-                    desejaVoltarAoMenu();
-                    scanf("%d", &escolha);
                     system("clear");
+                    lista_alunos(lista_formados);
+                    desejaVoltarAoMenu2();
+                    scanf("%d", &escolha);
+                    if (escolha == 2)
+                    {
+                        printf("Saindo...\n");
+                        liberarListas(&lista_formados);
+                        liberarListas(&lista_graduandos);
+                        exit(0);
+                    }
+
                     break;
 
                 case 6:

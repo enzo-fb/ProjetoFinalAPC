@@ -53,3 +53,7 @@ void listaAlunos(){
     printf("          -- Banco de alunos --\n\n");
     printf("    NOME                    MATRÍCULA \n\n");
 }
+
+void desejaVoltarAoMenu2(){
+    printf("\nDigita 1 para voltar ao menu anterior ou 2 para sair: \n");
+}
