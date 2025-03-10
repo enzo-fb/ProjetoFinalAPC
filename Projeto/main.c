@@ -41,7 +41,7 @@ int main()
                 switch (opcao)
                 {
                 case 1:
-                    lista_alunos(alunos, totalGraduando);
+                    lista_alunos(lista_graduandos);
                     consultar_aluno(lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
@@ -54,7 +54,7 @@ int main()
                     system("clear");
                     break;
                 case 3:
-                    lista_alunos(alunos, totalGraduando);
+                    lista_alunos(lista_graduandos);
                     remover_aluno(&lista_graduandos);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
@@ -93,7 +93,7 @@ int main()
                 switch (opcao)
                 {
                 case 1:
-                    lista_alunos(alunos, totalFormado);
+                    lista_alunos(lista_formados);
                     consultar_aluno(lista_formados);
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
@@ -106,7 +106,7 @@ int main()
                     system("clear");
                     break;
                 case 3:
-                    lista_alunos(alunos, totalFormado);
+                    lista_alunos(lista_formados);
                     remover_aluno(&lista_formados); // chama a função para remover
                     desejaVoltarAoMenu();
                     scanf("%d", &escolha);
@@ -273,14 +273,13 @@ void qntd_alunos(Lista *lista)
     printf("Quantidade de alunos cadastrados: %d\n", lista->total);
 }
 
-
 void lista_alunos(Lista *lista)
 {
-   if (lista == NULL)
-   {
-       printf("Lista vazia\n");
-       return;
-   }
+    if (lista == NULL)
+    {
+        printf("Lista vazia\n");
+        return;
+    }
     Raiz *aux = lista->inicio;
     while (aux->prox != NULL)
     {
