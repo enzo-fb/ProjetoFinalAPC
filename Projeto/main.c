@@ -3,25 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "menus.c"
-
-#define TOTAL 100
-
-typedef struct // a estrutura mais importante do código!
-{
-    int matricula;
-    char nome[TOTAL];
-    int idade;
-} Aluno;
-// a estrutura mais importante do código!
-// funções a serem utilizadas
-// usei "void" porque não retorna valor
-void lista_alunos(Aluno alunos[TOTAL], int total);
-void consultar_aluno(Aluno alunos[TOTAL], int total);
-void adicionar_aluno(Aluno alunos[TOTAL], int *total);
-void remover_aluno(Aluno alunos[TOTAL], int *total);
-void qntd_alunos(int total);
-
-// função principal
+#include "tipos.h"
 
 int main()
 {
@@ -32,7 +14,6 @@ int main()
     // a struct "aluno" inicializada, é através dela que os dados serão registrados.
     Aluno alunos[TOTAL];
     int totalGraduando = 0, totalFormado = 0; // variáveis inicializadas;
-    char resposta;                            // variável para usada para definir a continuidade do usuário no programa.
     int escolha;
     do
     {
