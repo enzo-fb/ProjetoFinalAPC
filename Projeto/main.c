@@ -56,26 +56,26 @@ int main()
                 case 1:
                     lista_alunos(alunos, totalGraduando);
                     consultar_aluno(alunos, totalGraduando);
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 2:
                     adicionar_aluno(alunos, &totalGraduando);
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalGraduando);
                     remover_aluno(alunos, &totalGraduando);
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 4:
                     qntd_alunos(totalGraduando);
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
@@ -107,26 +107,26 @@ int main()
                 case 1:
                     lista_alunos(alunos, totalFormado);
                     consultar_aluno(alunos, totalFormado); // chama a função para consultar
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 2:
                     adicionar_aluno(alunos, &totalFormado); // o símbolo '&' está sendo usado como endereço do ponteiro(*total), que está contido na função depois do "main".
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 3:
                     lista_alunos(alunos, totalFormado);
                     remover_aluno(alunos, &totalFormado); // chama a função para remover
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 4:
                     qntd_alunos(totalFormado); // chama a função para ver a quantidade de alunos
-                    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+                    desejaVoltarAoMenu();
                     scanf("%d", &escolha);
                     system("clear");
                     break;
@@ -206,7 +206,7 @@ void adicionar_aluno(Aluno alunos[TOTAL], int *total) // a variável *total(pont
     scanf("%d", &alunos[*total].idade);
     getchar();
 
-    (*total)++;    // adiciona mais um "aluno" na contagem total.
+    (*total)++;      // adiciona mais um "aluno" na contagem total.
     system("clear"); // diminui a poluição visual.
     printf("Aluno adicionado com sucesso.\n");
 }

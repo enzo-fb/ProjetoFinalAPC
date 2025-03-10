@@ -33,3 +33,7 @@ void menuCaso2(){
     printf("    6. Voltar ao menu principal.\n");
     printf("===========================================================\n");
 }
+
+void desejaVoltarAoMenu(){
+    printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+}
