@@ -78,7 +78,7 @@ int main()
                     printf("Saindo...\n");
                     liberarListas(&lista_formados);
                     liberarListas(&lista_graduandos);
-                    break;
+                    exit(0);
                 default:
                     system("clear");
                     printf("            Opção inválida!\n");
@@ -131,8 +131,6 @@ int main()
                     system("clear");
                     break;
 
-                    
-                    
                 case 6:
                     system("clear");
                     break;
@@ -140,7 +138,7 @@ int main()
                     printf("Saindo...\n");            // mensagem de saída
                     liberarListas(&lista_formados);   // libera a lista de formados
                     liberarListas(&lista_graduandos); // libera a lista de graduandos
-                    break;
+                    exit(0);                          // finaliza o programa
                 default:
                     system("clear");
                     printf("Opção inválida!\n");
@@ -294,7 +292,7 @@ void qntd_alunos(Lista *lista)
     {
         return;
     }
-    
+
     system("clear");
     printf("Quantidade de alunos cadastrados: %d\n", lista->total);
 }
