@@ -18,8 +18,9 @@ void menuCaso1(){
     printf("    2. Adicionar aluno;\n");
     printf("    3. Remover aluno;\n");
     printf("    4. Quantidade de alunos graduando\n");
-    printf("    5. Voltar ao menu principal;\n");
-    printf("    6. Sair\n");
+    printf("    5. Listar alunos\n");
+    printf("    6. Voltar ao menu principal;\n");
+    printf("    7. Sair\n");
     printf("===========================================================\n");
 }
 
@@ -30,8 +31,9 @@ void menuCaso2(){
     printf("    2. Adicionar aluno;\n");
     printf("    3. Remover aluno;\n");
     printf("    4. Quantidade de alunos formados;\n");
-    printf("    5. Voltar ao menu principal;\n");
-    printf("    6. Sair\n");
+    printf("    5. Listar alunos\n");
+    printf("    6. Voltar ao menu principal;\n");
+    printf("    7. Sair\n");
     printf("===========================================================\n");
 }
 

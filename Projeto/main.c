@@ -65,10 +65,16 @@ int main()
                     system("clear");
                     break;
                 case 5:
+                    lista_alunos(lista_graduandos);
+                    desejaVoltarAoMenu();
+                    scanf("%d", &escolha);
                     system("clear");
                     break;
                 case 6:
 
+                    system("clear");
+                    break;
+                case 7:
                     printf("Saindo...\n");
                     liberarListas(&lista_formados);
                     liberarListas(&lista_graduandos);
@@ -79,7 +85,7 @@ int main()
 
                     break;
                 }
-            } while (escolha != 2 && opcao != 5 && opcao != 6);
+            } while (escolha != 2 && opcao != 6 && opcao != 7);
             break;
         case 2:
             system("clear");
@@ -88,7 +94,7 @@ int main()
 
                 menuCaso2();
                 scanf("%d", &opcao);
-                fflush(stdin);
+                getchar();
 
                 switch (opcao)
                 {
@@ -119,20 +125,28 @@ int main()
                     system("clear");
                     break;
                 case 5:
+                    lista_alunos(lista_formados);
+                    desejaVoltarAoMenu();
+                    scanf("%d", &escolha);
                     system("clear");
                     break;
-                case 6:
-                    printf("Saindo...\n");
-                    liberarListas(&lista_formados);
-                    liberarListas(&lista_graduandos);
-                    break;
 
+                    
+                    
+                case 6:
+                    system("clear");
+                    break;
+                case 7:
+                    printf("Saindo...\n");            // mensagem de saída
+                    liberarListas(&lista_formados);   // libera a lista de formados
+                    liberarListas(&lista_graduandos); // libera a lista de graduandos
+                    break;
                 default:
                     system("clear");
                     printf("Opção inválida!\n");
                     break;
                 }
-            } while (escolha != 2 && opcao != 5 && opcao != 6);
+            } while (escolha != 2 && opcao != 6 && opcao != 7);
 
             break;
         case 3:
@@ -224,7 +238,7 @@ Lista *adicionar_aluno(Lista **lista)
 
 Lista *remover_aluno(Lista **lista)
 {
-    if (lista == NULL)
+    if ((*lista) == NULL)
     {
         printf("Lista vazia\n");
         return NULL;
@@ -239,6 +253,7 @@ Lista *remover_aluno(Lista **lista)
         (*lista)->inicio = (*lista)->inicio->prox;
         free(aux);
         printf("Aluno removido com sucesso\n");
+        (*lista)->total--;
         return *lista;
     }
     else if ((*lista)->fim->aluno.matricula == matricula)
@@ -251,6 +266,7 @@ Lista *remover_aluno(Lista **lista)
         free((*lista)->fim);
         (*lista)->fim = aux;
         (*lista)->fim->prox = NULL;
+        (*lista)->total--;
         printf("Aluno removido com sucesso\n");
         return *lista;
     }
@@ -263,6 +279,7 @@ Lista *remover_aluno(Lista **lista)
             aux->prox = aux->prox->prox;
             free(aux2);
             printf("Aluno removido com sucesso\n");
+            (*lista)->total--;
             return *lista;
         }
         aux = aux->prox;
@@ -273,6 +290,11 @@ Lista *remover_aluno(Lista **lista)
 
 void qntd_alunos(Lista *lista)
 {
+    if (lista == NULL)
+    {
+        return;
+    }
+    
     system("clear");
     printf("Quantidade de alunos cadastrados: %d\n", lista->total);
 }
@@ -281,11 +303,10 @@ void lista_alunos(Lista *lista)
 {
     if (lista == NULL)
     {
-        printf("Lista vazia\n");
         return;
     }
     Raiz *aux = lista->inicio;
-    while (aux->prox != NULL)
+    while (aux != NULL)
     {
         printAluno(aux->aluno);
         aux = aux->prox;
