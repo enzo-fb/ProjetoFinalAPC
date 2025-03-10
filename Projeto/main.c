@@ -156,10 +156,7 @@ void consultar_aluno(Aluno alunos[TOTAL], int total)
         if (strcmp(alunos[i].nome, nome_aluno) == 0) // estrutura básica de comparação de strings
         {
             system("clear");
-            printf("-- Registro do aluno --\n");
-            printf("Nome: %s\n", alunos[i].nome);
-            printf("Idade: %d\n", alunos[i].idade);
-            printf("Matrícula: 00%d\n", alunos[i].matricula);
+            printAluno(alunos[i]); // chama a função para imprimir os dados do aluno
             encontrado = 1;
             break;
         }

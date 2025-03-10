@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "tipos.h"
 void menuPrincipal(){
     printf("\n===========================================================\n");
     printf("       Sistema Eletr?nico de Gest?o de Alunos - SEGA\n");
@@ -36,4 +37,11 @@ void menuCaso2(){
 
 void desejaVoltarAoMenu(){
     printf("\nDeseja voltar ao menu?\n1 - Voltar ao menu anterior\n2 - Voltar ao menu principal\n");
+}
+
+void printAluno(Aluno aluno){
+    printf("-- Registro do aluno --\n");
+    printf("Nome: %s\n", aluno.nome);
+    printf("Idade: %d\n", aluno.idade);
+    printf("Matrícula: 00%d\n", aluno.matricula);
 }
