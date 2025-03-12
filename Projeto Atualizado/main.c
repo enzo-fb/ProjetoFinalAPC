@@ -5,7 +5,6 @@
 #include "menus.c"
 #include "tipos.h"
 #include "funcoes.c"
-void consultar_aluno(Lista *lista);
 
 int main()
 {
