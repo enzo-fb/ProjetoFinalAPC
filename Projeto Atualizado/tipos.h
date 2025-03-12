@@ -30,4 +30,5 @@ Lista*adicionar_aluno(Lista **lista);
 Lista*remover_aluno(Lista **lista);
 void qntd_alunos(Lista *lista);
 void liberarListas(Lista **lista);
+void sistema();
 #endif // TIPOS_H
